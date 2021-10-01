@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>SA Studio Home</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script
+	src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+
+</head>
+
+<body style="background-color: #4D4D4D">
+	<div th:insert="~{./header :: header}"></div>
+	<script>
+		$('#home').addClass('active')
+	</script>
+
+	<form class="ui form" method="post"
+		th:action="@{/hremployee/updatebootcamp}"
+		style="margin-left: 25px; margin-right: 25px;">
+		<div class="center aligned two column row">
+
+			<div class="column">
+				<div class="ui segment">
+					<h1>Stations</h1>
+
+					<div class="ui divider"></div>
+
+					<div class="content" th:each="station:${stations}">
+
+						<div class="ui grid">
+
+							<div class="one wide middle aligned center aligned column">
+								<i class="large newspaper icon"></i>
+							</div>
+
+
+							<div class="two wide middle aligned column">
+								<h4>
+									<span th:text="${station.stationName}" th:name="stationname"></span>
+								</h4>
+							</div>
+
+
+							<div class="six wide middle aligned column">
+								<h5>
+									<span th:text="${station.address}"></span>
+								</h5>
+							</div>
+
+
+							<div class="three wide middle aligned column">
+								<div th:each="trainee, iterStat:*{bootcamp.getTrainees()}">
+									<h5>
+										<span
+											th:text="!${iterStat.last} ? ${trainee.firstName + ' ' + trainee.lastName} + ',' : ${trainee.firstName + trainee.lastName}"></span>
+									</h5>
+								</div>
+							</div>
+
+							<div class="two wide center aligned middle aligned column">
+								<button class="ui orange fluid inverted button" type="submit"
+									th:name="action"
+									th:value="'edit_bootcamp:' + ${bootcamp.bootcampName}">Edit</button>
+							</div>
+
+							<div class="two wide center aligned middle aligned column">
+								<button class="ui orange fluid inverted button" type="submit"
+									th:name="action"
+									th:value="'activate_bootcamp:' + ${bootcamp.bootcampName}">Finish</button>
+							</div>
+
+						</div>
+						<div class="ui divider"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</body>

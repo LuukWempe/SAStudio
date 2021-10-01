@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>High Voltage Error</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <script src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="../../static/elements.js"></script>
+
+</head>
+<body style="background-color: #4d4d4d">
+
+<div class="ui one column doubling grid center aligned  stackable  container">
+
+    <form class="ui form" style="position:absolute; top:200px;" >
+        <div class="ui stacked segment center aligned" style="background-color:#FFD100;">
+                <h2 class="ui #4d4d4d inverted image header">
+                    <div class="content" style="margin-top:25px">
+                        <i class="huge stethoscope icon grey"></i>
+                        <i class="huge heartbeat icon grey"></i>
+                        <i class="huge syringe icon grey"></i>
+                    </div>
+                    <h1 style="color: #4d4d4d;font-family:Arial;"> Something went wrong.</h1>
+                </h2>
+            <div>
+                <a href="/logout" class="ui fluid large grey submit button" type="submit">Back to Login</a>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
