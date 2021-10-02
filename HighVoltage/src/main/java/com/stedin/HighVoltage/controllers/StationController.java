@@ -17,4 +17,6 @@ public class StationController {
 		 model.addAttribute("stations", stationService.getTopStations(100));
 	    	return "/stations";
 	    }
+	 
+	 
 }
