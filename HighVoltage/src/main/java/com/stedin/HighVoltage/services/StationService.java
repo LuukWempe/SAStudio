@@ -22,4 +22,9 @@ public class StationService {
 		Page<Station> topBootcamps = stationRepository.findAllByStationStatus(true, PageRequest.of(0,length, Sort.by("endDate").descending()));
         return topBootcamps.getContent();
 	}	
+	
+	public void registerStation(String stationName, stationStatus) {
+		Station station = new Station(stationName, stationStatus);
+		stationRepository.save(station);
+	}
 }

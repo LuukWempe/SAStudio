@@ -18,5 +18,4 @@ public class StationController {
 	    	return "/stations";
 	    }
 	 
-	 
 }
