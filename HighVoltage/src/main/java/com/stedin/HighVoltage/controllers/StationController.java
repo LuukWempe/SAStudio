@@ -20,6 +20,9 @@ public class StationController {
 	StationService stationService;
 	
 	@Autowired
+	IEDService iedService;
+	
+	@Autowired
 	StationRepository stationRepository;
 	
 	@Autowired
@@ -46,8 +49,9 @@ public class StationController {
 	 public String viewIED(Model model, @PathVariable("iedID") Long iedID) {
 		 IED ied = stationService.getStationIEDByIEDID(iedID);
 		 Station station = stationService.getStationByIEDID(iedID);
-		 model.addAttribute("ied",ied);
 		 model.addAttribute("station", station);
+		 model.addAttribute("ied",ied);
+		 model.addAttribute("signals", iedService.getSignalsByIEDID(100,iedID));
 		 //model.addAttribute("signals", signals);
 		 return "/station/ied";
 	 }
