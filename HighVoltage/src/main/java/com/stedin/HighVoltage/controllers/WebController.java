@@ -3,8 +3,8 @@ package com.stedin.HighVoltage.controllers;
 import com.stedin.HighVoltage.model.users.AppUser;
 import com.stedin.HighVoltage.repositories.AppUserRepository;
 import com.stedin.HighVoltage.services.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class WebController {
 
 
 
-	private static final Logger logger = LoggerFactory.getLogger(WebController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
 
 	@GetMapping({"/", "/home", "/index"})
@@ -88,6 +88,10 @@ public class WebController {
         return "/settings";
     }
     
+    @PostMapping("/updatesettings")
+    public String updateSettings() {
+    	return "/settings";
+    }
 
 	@PostMapping("/login")
 	public String validateLogin() {

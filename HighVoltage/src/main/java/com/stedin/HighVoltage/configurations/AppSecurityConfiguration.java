@@ -4,7 +4,6 @@ package com.stedin.HighVoltage.configurations;
 import com.stedin.HighVoltage.services.AppUserService;
 import com.stedin.HighVoltage.services.StationService;
 //import com.stedin.HighVoltage.SAEngineerRepository;
-import com.stedin.HighVoltage.model.users.SAEngineer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -114,7 +113,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
         //Talentmanager
         appUserService.registerUser("talentmanager","Joke", "Gaarsen", "jokegaarsen@mail.com", encoder.encode("hallo"), "TALENTMANAGER", true, false, Date.valueOf("1997-01-01") ,"2216TL", "Ter Beek", "4", "Lisse", "Netherlands", "+316-45389142", "");
         
-        stationService.registerStation("",)
+        //stationService.addStation("Zoetermeer 13", true, "Zoetermeerse weg 13, 1234AB, Zoetermeer", "1,2");
+        
+        
+        
     }
 
 }

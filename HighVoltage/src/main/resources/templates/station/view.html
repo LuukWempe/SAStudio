@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>SA Studio Station View</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script
+	src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+
+</head>
+
+<body style="background-color: #4D4D4D">
+	<div th:insert="~{./header :: header}"></div>
+	<script>
+		$('#stations').addClass('active')
+	</script>
+
+	<form class="ui form" method="post" th:action="@{/station/view}"
+		style="margin-left: 25px; margin-right: 25px;">
+		<div class="center aligned two column row">
+
+			<div class="column">
+				<div class="ui segment" style="margin-top: 10px">
+
+					<div class="ui grid">
+
+						<div class="one wide middle aligned center aligned column">
+							<i class="large industry icon"></i>
+						</div>
+
+						<div class="three wide right aligned center aligned column">
+							<h2>Station View:</h2>
+						</div>
+
+						<div class="three wide left aligned column">
+							<h2>
+								<span th:text="${station.stationName}" th:name="stationname"></span>
+							</h2>
+						</div>
+						<div class="three wide right aligned center aligned column"></div>
+
+						<div class="six wide center aligned middle aligned column">
+							<button class="ui yellow fluid inverted button" type="submit"
+								th:name="action"
+								th:value="'view_stations:' + ${station.stationName}">Back
+								to Stations</button>
+						</div>
+
+					</div>
+
+					<div class="ui divider"></div>
+
+
+
+
+
+					<div class="content" th:each="ied:${ieds}">
+						<div class="ui grid">
+
+							<div class="one wide middle aligned center aligned column">
+								<i class="large microchip icon"></i>
+							</div>
+
+							<div class="two wide middle aligned center aligned column">
+								<h5>
+									<span th:text="${ied.getIEDName()}"></span>
+								</h5>
+							</div>
+
+							<div class="three wide middle aligned center aligned column">
+								<h5>
+									<span th:text="${ied.getIEDIP()}"></span>
+								</h5>
+							</div>
+
+							<div class="seven wide right aligned center aligned column"></div>
+
+							<div class="three wide center aligned middle aligned column">
+								<button class="ui yellow fluid inverted button" type="submit"
+									th:name="action" th:value="'view_ied:' + ${ied.getIEDID()}">View
+									IO</button>
+							</div>
+						</div>
+
+						<div class="ui divider"></div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</form>
+</body>

@@ -20,16 +20,16 @@
 <body style="background-color: #4D4D4D">
 	<div th:insert="~{./header :: header}"></div>
 	<script>
-		$('#home').addClass('active')
+		$('#stations').addClass('active')
 	</script>
 
 	<form class="ui form" method="post"
-		th:action="@{/hremployee/updatebootcamp}"
+		th:action="@{/station/view}"
 		style="margin-left: 25px; margin-right: 25px;">
 		<div class="center aligned two column row">
 
 			<div class="column">
-				<div class="ui segment">
+				<div class="ui segment" style="margin-top:10px">
 					<h1>Stations</h1>
 
 					<div class="ui divider"></div>
@@ -39,24 +39,32 @@
 						<div class="ui grid">
 
 							<div class="one wide middle aligned center aligned column">
-								<i class="large newspaper icon"></i>
+								<i class="large industry icon"></i>
 							</div>
 
 
-							<div class="two wide middle aligned column">
+							<div class="four wide middle aligned column">
 								<h4>
 									<span th:text="${station.stationName}" th:name="stationname"></span>
 								</h4>
 							</div>
 
 
-							<div class="six wide middle aligned column">
+							<div class="three wide middle aligned column">
 								<h5>
-									<span th:text="${station.address}"></span>
+									<span th:text="${station.stationStatus}"></span>
+								</h5>
+							</div>
+							
+							<div class="five wide middle aligned column">
+								<h5>
+									<span th:text="${station.stationAddress}"></span>
 								</h5>
 							</div>
 
 
+						<!-- 
+							
 							<div class="three wide middle aligned column">
 								<div th:each="trainee, iterStat:*{bootcamp.getTrainees()}">
 									<h5>
@@ -64,7 +72,10 @@
 											th:text="!${iterStat.last} ? ${trainee.firstName + ' ' + trainee.lastName} + ',' : ${trainee.firstName + trainee.lastName}"></span>
 									</h5>
 								</div>
-							</div>
+							</div>			
+							
+						
+							
 
 							<div class="two wide center aligned middle aligned column">
 								<button class="ui orange fluid inverted button" type="submit"
@@ -76,6 +87,14 @@
 								<button class="ui orange fluid inverted button" type="submit"
 									th:name="action"
 									th:value="'activate_bootcamp:' + ${bootcamp.bootcampName}">Finish</button>
+							</div>
+							
+							-->
+							
+							<div class="three wide center aligned middle aligned column">
+								<button class="ui yellow fluid inverted button" type="submit"
+									th:name="action"
+									th:value="'view_station:' + ${station.stationName}">View</button>
 							</div>
 
 						</div>
