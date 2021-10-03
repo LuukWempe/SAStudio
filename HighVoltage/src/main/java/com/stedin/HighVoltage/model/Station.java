@@ -24,7 +24,11 @@ public class Station{
 
 	//Constructor
 	public Station() {
-		
+	}
+	
+	public Station(String stationName, String stationStatus) {
+		this.stationName = stationName; 
+		this.stationStatus = stationStatus;
 	}
 	
 	//Getters and Setters

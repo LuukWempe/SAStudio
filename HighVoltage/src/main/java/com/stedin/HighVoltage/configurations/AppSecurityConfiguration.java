@@ -114,7 +114,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
         //Talentmanager
         appUserService.registerUser("talentmanager","Joke", "Gaarsen", "jokegaarsen@mail.com", encoder.encode("hallo"), "TALENTMANAGER", true, false, Date.valueOf("1997-01-01") ,"2216TL", "Ter Beek", "4", "Lisse", "Netherlands", "+316-45389142", "");
         
-        
+        stationService.registerStation("",)
     }
 
 }
