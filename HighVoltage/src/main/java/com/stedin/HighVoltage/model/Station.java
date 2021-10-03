@@ -20,15 +20,20 @@ public class Station{
 	@Column(name="stationStatus")
 	private Boolean stationStatus;
 	
+	@Column(name="stationAddress")
+	private String stationAddress;
 
 
 	//Constructor
 	public Station() {
+		
 	}
 	
-	public Station(String stationName, String stationStatus) {
-		this.stationName = stationName; 
+	public Station(String stationName, Boolean stationStatus, String stationAddress) {
+		this.stationName = stationName;
 		this.stationStatus = stationStatus;
+		this.stationAddress = stationAddress;
+		
 	}
 	
 	//Getters and Setters
@@ -39,7 +44,9 @@ public class Station{
 	public void setStationName(String stationName) {this.stationName = stationName;}
 	
 	public Boolean getStationStatus() {return stationStatus;}
-	public void setStationStatus(Boolean status) {this.stationStatus = stationStatus;}
+	public void setStationStatus(Boolean stationStatus) {this.stationStatus = stationStatus;}
 	
-	
+	public String getStationAddress() {return stationAddress;}
+	public void setStationAddress(String stationAddress) {this.stationAddress = stationAddress;}
+		
 }
