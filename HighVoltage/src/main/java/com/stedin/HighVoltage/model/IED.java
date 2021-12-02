@@ -22,23 +22,23 @@ public class IED {
 	private String name;
 	
 	@Column(name="iedip")
-	private String iedIP;
+	private String iedIp;
 	
-	@Column(name="StationID")
-	private Long stationID;
+	@Column(name="stationid")
+	private Long stationId;
 	
 	@OneToMany(mappedBy="ied", cascade=CascadeType.ALL)
 	private List<IEDSignal> iedSignals;
 	
-	public Long getIEDID() {return iedId;}
-	public void setIEDID(Long id) {this.iedId = id;}
+	public Long getIedId() {return iedId;}
+	public void setIedId(Long id) {this.iedId = id;}
 	
-	public String getIEDName() {return name;}
-	public void setIEDName(String name) {this.name = name;}
+	public String getIedName() {return name;}
+	public void setIedName(String name) {this.name = name;}
 	
-	public String getIEDIP() {return iedIP;}
-	public void setIEDIP(String iedIP) {this.iedIP = iedIP;}
+	public String getIedIp() {return iedIp;}
+	public void setIedIp(String iedIp) {this.iedIp = iedIp;}
 	
-	public Long getStationID() {return stationID;}
-	public void setStationID(Long stationID) {this.stationID = stationID;}
+	public Long getStationId() {return stationId;}
+	public void setStationId(Long stationId) {this.stationId = stationId;}
 }

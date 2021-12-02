@@ -2,7 +2,6 @@ package com.stedin.HighVoltage.model;
 
 import java.io.File;
 
-import javax.persistence.Entity;
 import javax.swing.JFileChooser;
 
 public class FileManager{

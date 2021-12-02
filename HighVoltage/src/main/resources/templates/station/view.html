@@ -71,13 +71,13 @@
 
 							<div class="two wide middle aligned center aligned column">
 								<h5>
-									<span th:text="${ied.getIEDName()}"></span>
+									<span th:text="${ied.getIedName()}"></span>
 								</h5>
 							</div>
 
 							<div class="three wide middle aligned center aligned column">
 								<h5>
-									<span th:text="${ied.getIEDIP()}"></span>
+									<span th:text="${ied.getIedIp()}"></span>
 								</h5>
 							</div>
 
@@ -85,7 +85,7 @@
 
 							<div class="three wide center aligned middle aligned column">
 								<button class="ui yellow fluid inverted button" type="submit"
-									th:name="action" th:value="'view_ied:' + ${ied.getIEDID()}">View
+									th:name="action" th:value="'view_ied:' + ${ied.getIedId()}">View
 									IO</button>
 							</div>
 						</div>

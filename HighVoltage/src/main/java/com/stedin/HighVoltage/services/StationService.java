@@ -6,7 +6,6 @@ import com.stedin.HighVoltage.model.IED;
 import com.stedin.HighVoltage.model.Station;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +29,7 @@ public class StationService {
 	}	
 	
 	public List<IED> getStationIed(int length, Station station){
-        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("iedIP").ascending()));
+        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("iedIp").ascending()));
         return stationIEDs.getContent();
     }
 	
@@ -46,7 +45,7 @@ public class StationService {
 
 	public Station getStationByIedId(Long iedId) {
 		IED ied = iedRepository.findByIedId(iedId);
-		Station station = stationRepository.findByStationId(ied.getStationID());
+		Station station = stationRepository.findByStationId(ied.getStationId());
 		return station;
 	}
 }

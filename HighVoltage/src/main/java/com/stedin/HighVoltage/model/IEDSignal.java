@@ -14,7 +14,7 @@ public class IEDSignal{
 	
 	@Id
 	@GeneratedValue
-	private Long iedSignalId;
+	private Long signalId;
 	
 	@ManyToOne
 	@JoinColumn(name="ied_id", nullable=false)
@@ -90,12 +90,12 @@ public class IEDSignal{
 	public IEDSignal() {}
 	
 	
-	public IEDSignal(long iedSignalId, IED ied, String name, boolean fp_inStation, int fp_NumDiAi, int fp_NumDu,
+	public IEDSignal(long signalId, IED ied, String name, boolean fp_inStation, int fp_NumDiAi, int fp_NumDu,
 			String fp_Vertraging, String fp_HwSw, String fp_IedSlot, String fp_Klem, String fp_IedIO1, int fp_IedIO1Pos,
 			int fp_IedIO1Neg, String fp_IedIO2, int fp_IedIO2Pos, int fp_IedIO2Neg, String fp_IedIO3, int fp_IedIO3Pos,
 			int fp_IedIO3Neg, String fp_IedIO4, int fp_IedIO4Pos, int fp_IedIO4Neg, boolean fp_NormalePositie,
 			boolean fp_Inverteren) {
-		this.iedSignalId = iedSignalId;
+		this.signalId = signalId;
 		this.ied = ied;
 		this.name = name;
 		this.fp_inStation = fp_inStation;
@@ -121,14 +121,19 @@ public class IEDSignal{
 		this.fp_Inverteren = fp_Inverteren;
 	}
 
-
-	public Long getSignalID() {return iedSignalId;}
-	public void setSignalID(Long id) {this.iedSignalId = id;}
+	//Getters and Setters
+	public Long getSignalId() {return signalId;}
+	public void setSignalId(Long signalId) {this.signalId = signalId;}
 	
 	public String getSignalName() {return name;}
 	public void setSignalName(String name) {this.name = name;}
 	
-	public IED getIEDID() {return ied;}
-	public void setIEDID(IED ied) {this.ied = ied;}
+	public IED getIed() {return ied;}
+	public void setIED(IED ied) {this.ied = ied;}
+	
+	//Methods
+	public Long getIedId() {
+		return this.ied.getIedId();
+	}
 	
 }

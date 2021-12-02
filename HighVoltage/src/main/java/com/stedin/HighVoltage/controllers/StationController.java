@@ -2,7 +2,6 @@ package com.stedin.HighVoltage.controllers;
 
 import com.stedin.HighVoltage.model.IED;
 import com.stedin.HighVoltage.model.Station;
-import com.stedin.HighVoltage.repositories.IEDRepository;
 import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,7 @@ public class StationController {
 		 return "/station/view";
 	 }
 	 
-	 @GetMapping(path="/station/ied/{iedID}")
+	 @GetMapping(path="/station/ied/{iedId}")
 	 public String viewIED(Model model, @PathVariable("iedId") Long iedId) {
 		 IED ied = stationService.getStationIedByIedId(iedId);
 		 Station station = stationService.getStationByIedId(iedId);
