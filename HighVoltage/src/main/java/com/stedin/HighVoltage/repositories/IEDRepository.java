@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IEDRepository extends JpaRepository<IED, Long> {
-	IED findByIedID(Long iedID);
-	Page<IED> findAllByStationID(Long stationID, Pageable pageable);
+	IED findByIedId(Long iedId);
+	Page<IED> findAllByStationId(Long stationId, Pageable pageable);
 }

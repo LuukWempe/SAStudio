@@ -26,7 +26,8 @@ public class Station{
 
 	//Constructor
 	public Station() {
-		
+		this.stationStatus = true;
+		this.stationName = "New Station";
 	}
 	
 	public Station(String stationName, Boolean stationStatus, String stationAddress) {

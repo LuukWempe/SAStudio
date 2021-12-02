@@ -15,8 +15,8 @@ public class IEDService {
 	@Autowired
 	private IEDSignalRepository iedSignalRepository;
 
-	public List<IEDSignal> getSignalsByIEDID(int length,Long iedID){
-        Page<IEDSignal> iedSignals = iedSignalRepository.findByIedID(iedID, PageRequest.of(0,length, Sort.by("signalID").ascending()));
+	public List<IEDSignal> getSignalsByIedId(int length,Long id){
+        Page<IEDSignal> iedSignals = iedSignalRepository.findByIedId(id, PageRequest.of(0,length, Sort.by("signalID").ascending()));
         return iedSignals.getContent();
     }
 }

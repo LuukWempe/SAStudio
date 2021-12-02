@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>SA Studio Home</title>
+<title>SA Studio Stations</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -23,13 +23,12 @@
 		$('#stations').addClass('active')
 	</script>
 
-	<form class="ui form" method="post"
-		th:action="@{/station/view}"
+	<form class="ui form" method="post" th:action="@{/station/view}"
 		style="margin-left: 25px; margin-right: 25px;">
 		<div class="center aligned two column row">
 
 			<div class="column">
-				<div class="ui segment" style="margin-top:10px">
+				<div class="ui segment" style="margin-top: 10px">
 					<h1>Stations</h1>
 
 					<div class="ui divider"></div>
@@ -55,7 +54,7 @@
 									<span th:text="${station.stationStatus}"></span>
 								</h5>
 							</div>
-							
+
 							<div class="five wide middle aligned column">
 								<h5>
 									<span th:text="${station.stationAddress}"></span>
@@ -63,7 +62,7 @@
 							</div>
 
 
-						<!-- 
+							<!-- 
 							
 							<div class="three wide middle aligned column">
 								<div th:each="trainee, iterStat:*{bootcamp.getTrainees()}">
@@ -90,7 +89,7 @@
 							</div>
 							
 							-->
-							
+
 							<div class="three wide center aligned middle aligned column">
 								<button class="ui yellow fluid inverted button" type="submit"
 									th:name="action"
@@ -99,6 +98,13 @@
 
 						</div>
 						<div class="ui divider"></div>
+
+
+					</div>
+
+					<div class="sixteen wide center aligned middle aligned column">
+						<button class="ui yellow fluid inverted button" type="submit"
+							th:name="action" th:value="new_station">New Station</button>
 					</div>
 				</div>
 			</div>

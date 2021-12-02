@@ -15,7 +15,7 @@ insert into IEDS values(8,'10.47.97.14','IO-Box',1);
 insert into IEDS values(9,'10.47.97.16','Switch 1',1);
 insert into IEDS values(10,'10.47.97.17','Switch 2',1);
 
-insert into IEDSIGNALS values(1,165216842,5,'Communication Enabled');
-insert into IEDSIGNALS values(2,152182442,5,'Communication Error');
-insert into IEDSIGNALS values(3,364896126,5,'Connection Esablished');
-insert into IEDSIGNALS values(4,932571568,5,'No Short Circuit');
+--insert into IEDSIGNALS values(1,165216842,5,'Communication Enabled');
+--insert into IEDSIGNALS values(2,152182442,5,'Communication Error');
+--insert into IEDSIGNALS values(3,364896126,5,'Connection Esablished');
+--insert into IEDSIGNALS values(4,932571568,5,'No Short Circuit');

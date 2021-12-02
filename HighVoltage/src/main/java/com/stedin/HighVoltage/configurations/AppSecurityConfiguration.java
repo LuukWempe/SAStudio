@@ -2,8 +2,6 @@ package com.stedin.HighVoltage.configurations;
 
 
 import com.stedin.HighVoltage.services.AppUserService;
-import com.stedin.HighVoltage.services.StationService;
-//import com.stedin.HighVoltage.SAEngineerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -36,20 +34,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/login",
                 "/register",
                 "/console",
-                "/open/**").permitAll()
+                "/open/**",
+                "/templates/static/**").permitAll()
             .antMatchers(
-                "/users/**").hasRole("USER")
-            .antMatchers(
-                "/admin/**").hasRole("ADMIN")
-            .antMatchers(
-                "/saengineer/**").hasRole("SAENGINEER")
-            .antMatchers(
-                "/talentmanager/**").hasRole("TALENTMANAGER")
-            .antMatchers(
-                "/hremployee/**").hasRole("HREMPLOYEE")
-            .antMatchers(
-                "/manager/**").hasRole("MANAGER")
-
+                "/**").hasRole("ADMIN")
 
                 .and()
             .csrf().ignoringAntMatchers("/**")
@@ -76,9 +64,6 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public AppUserService appUserService;
-    
-    @Autowired
-    public StationService stationService;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
@@ -95,7 +80,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
            .passwordEncoder(encoder);
 
         //Trainees
-        appUserService.registerUser("luuk","Luuk", "Wempe", "luukwempe@mail.com", encoder.encode("hallo"), "ADMIN", true, false, Date.valueOf("1996-01-01"),"1632BT", "Klaverstraat", "15", "Sassenheim", "Netherlands", "06324543", "devops-02-19");
+        appUserService.registerUser("luuk","Luuk", "Wempe", "luukwempe@mail.com", encoder.encode("hallo"), "ADMIN", true, true, Date.valueOf("1996-01-01"),"1632BT", "Klaverstraat", "15", "Sassenheim", "Netherlands", "06324543", "devops-02-19");
         appUserService.registerUser("vuong","Vuong", "Ngo", "vuongngo@gmail.com", encoder.encode("hallo"), "TRAINEE" , true, false, Date.valueOf("1995-10-15"),"1628WR", "Han Hoekstrahof", "1", "Hoorn", "Netherlands", "0229123456", "devops-02-19");
         appUserService.registerUser("simone","Simone", "Meijers", "scmeijers@mail.com", encoder.encode("hallo"), "TRAINEE", true, false, Date.valueOf("1995-07-09"),"1420BP", "Steenstraat", "21", "Deventer", "Netherlands", "061123213","devops-02-19");
         appUserService.registerUser("wouter","Wouter", "Abels", "walterdeman@hotmail.com", encoder.encode("hallo"), "TRAINEE",  true, false,Date.valueOf("1995-02-07") ,"6043JK", "Vlamhof", "34", "Nieuwegein", "Netherlands", "06232312", "devops-02-19");
@@ -112,11 +97,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //Talentmanager
         appUserService.registerUser("talentmanager","Joke", "Gaarsen", "jokegaarsen@mail.com", encoder.encode("hallo"), "TALENTMANAGER", true, false, Date.valueOf("1997-01-01") ,"2216TL", "Ter Beek", "4", "Lisse", "Netherlands", "+316-45389142", "");
-        
-        //stationService.addStation("Zoetermeer 13", true, "Zoetermeerse weg 13, 1234AB, Zoetermeer", "1,2");
-        
-        
-        
+      
     }
 
 }

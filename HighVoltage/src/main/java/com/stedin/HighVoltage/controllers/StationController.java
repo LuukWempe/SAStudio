@@ -26,9 +26,6 @@ public class StationController {
 	StationRepository stationRepository;
 	
 	@Autowired
-	IEDRepository iedRepository;
-	
-	@Autowired
 	public StationController(){}
 	
 	 @GetMapping("/stations")
@@ -41,17 +38,17 @@ public class StationController {
 	 public String viewStation(Model model, @PathVariable("stationName") String stationName) {
 		 Station station = stationRepository.findByStationName(stationName);
 		 model.addAttribute("station",station);
-		 model.addAttribute("ieds", stationService.getStationIEDs(100,station));
+		 model.addAttribute("ieds", stationService.getStationIed(100,station));
 		 return "/station/view";
 	 }
 	 
 	 @GetMapping(path="/station/ied/{iedID}")
-	 public String viewIED(Model model, @PathVariable("iedID") Long iedID) {
-		 IED ied = stationService.getStationIEDByIEDID(iedID);
-		 Station station = stationService.getStationByIEDID(iedID);
+	 public String viewIED(Model model, @PathVariable("iedId") Long iedId) {
+		 IED ied = stationService.getStationIedByIedId(iedId);
+		 Station station = stationService.getStationByIedId(iedId);
 		 model.addAttribute("station", station);
 		 model.addAttribute("ied",ied);
-		 model.addAttribute("signals", iedService.getSignalsByIEDID(100,iedID));
+		 model.addAttribute("signals", iedService.getSignalsByIedId(100,iedId));
 		 //model.addAttribute("signals", signals);
 		 return "/station/ied";
 	 }
@@ -68,8 +65,17 @@ public class StationController {
 		 		
 		 	case "view_ied":
 		 		return "redirect:/station/ied/" + actions[1];
-		 }
-		 
+		 		
+		 	case "new_station":
+		 		return "redirect:/station/newstation";
+		 } 
 		 return "/stations";
+	 }
+	 
+	 @GetMapping("/station/newstation")
+	 public String newStation(Model model) {
+		 Station newstation = new Station();
+		 model.addAttribute("newstation", newstation);
+		 return "/newstation";
 	 }
 }

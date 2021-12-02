@@ -1,5 +1,6 @@
 package com.stedin.HighVoltage.controllers;
 
+import com.stedin.HighVoltage.model.FileManager;
 import com.stedin.HighVoltage.model.users.AppUser;
 import com.stedin.HighVoltage.repositories.AppUserRepository;
 import com.stedin.HighVoltage.services.*;
@@ -8,6 +9,7 @@ import com.stedin.HighVoltage.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -32,26 +34,26 @@ public class WebController {
 
 
 	@GetMapping({"/", "/home", "/index"})
-	public String home() {
-		return "home";		
+	public String home(Model model) {
+		model.addAttribute("user",appUserService.getActiveUser());
+		return "/home";		
 	}
 	
 	@GetMapping("/login")
 	public String login() {
-		return "login";
-	}
-
-	@PostMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "logout";
+		return "/login";
 	}
 
 	//return logout page
 	@GetMapping("/logout")
 	public String getLogout(HttpSession session) {
 		session.invalidate();
-		return "/logout";
+		return "/login";
+	}
+	
+	@PostMapping("/login")
+	public String validateLogin() {
+		return "/home";
 	}
 
 	@GetMapping("/open/**")
@@ -60,13 +62,7 @@ public class WebController {
 	}
 
 
-	@GetMapping("/admin/**")
-	public String admin() {
-		return "admin";
-	}
-
-
-	@GetMapping({"redirectLogin", "/dashboard"})
+	@GetMapping("redirectLogin")
 	public String getDashBoard() {
 
 		try {
@@ -92,11 +88,13 @@ public class WebController {
     public String updateSettings() {
     	return "/settings";
     }
+    
+    @PostMapping("/import_io")
+    public String importIO(){
+    	FileManager.importIO();
+    	return "/home";
+    }
 
-	@PostMapping("/login")
-	public String validateLogin() {
-		return "/dashboardpages/dashboardpage";
-	}
 
     @PostMapping("/changepassword")
     public String changepassword(String new_password, String confirm_password) {
@@ -112,11 +110,10 @@ public class WebController {
                 user.setActivated(true);
                 appUserRepository.save(user);
             }
-
             return "redirect:/redirectLogin";
         }
 
-        return "redirect:/trainee/accountsettings";
+        return "redirect:/settings";
     }
 
 
@@ -156,6 +153,6 @@ public class WebController {
 				telephonenumber,
 				bootcamp);
 
-		return "/dashboardpages/dashboardpage";
+		return "/home";
 	}
 }

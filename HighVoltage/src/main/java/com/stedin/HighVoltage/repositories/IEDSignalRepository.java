@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IEDSignalRepository extends JpaRepository<IEDSignal, Long> {
-	IEDSignal findBySignalName(String signalName);
-	IEDSignal findBySignalID(Long signalID);
-	Page<IEDSignal> findByIedID(Long iedID, Pageable pageable);
+	IEDSignal findByName(String name);
+	IEDSignal findByIedSignalId(Long iedSignalId);
+	Page<IEDSignal> findByIedId(Long iedId, Pageable pageable);
 }

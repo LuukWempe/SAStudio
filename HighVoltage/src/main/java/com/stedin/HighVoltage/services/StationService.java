@@ -6,6 +6,7 @@ import com.stedin.HighVoltage.model.IED;
 import com.stedin.HighVoltage.model.Station;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,12 +25,12 @@ public class StationService {
 	
 
 	public List<Station> getTopStations(int length){
-		Page<Station> topBootcamps = stationRepository.findAllByStationStatus(true, PageRequest.of(0,length, Sort.by("stationName").descending()));
-        return topBootcamps.getContent();
+		Page<Station> topStations = stationRepository.findByStationStatus(true, PageRequest.of(0,length, Sort.by("stationName").descending()));
+        return topStations.getContent();
 	}	
 	
-	public List<IED> getStationIEDs(int length, Station station){
-        Page<IED> stationIEDs = iedRepository.findAllByStationID(station.getStationID(), PageRequest.of(0,length, Sort.by("iedIP").ascending()));
+	public List<IED> getStationIed(int length, Station station){
+        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("iedIP").ascending()));
         return stationIEDs.getContent();
     }
 	
@@ -37,15 +38,15 @@ public class StationService {
 		Station station = new Station(stationName, stationStatus, stationAddress);
 		stationRepository.save(station);
 	}
-
-	public IED getStationIEDByIEDID(Long iedID) {
-		IED ied = iedRepository.findByIedID(iedID);
+	
+	public IED getStationIedByIedId(Long iedId) {
+		IED ied = iedRepository.findByIedId(iedId);
 		return ied;
 	}
 
-	public Station getStationByIEDID(Long iedID) {
-		IED ied = iedRepository.findByIedID(iedID);
-		Station station = stationRepository.findByStationID(ied.getStationID());
+	public Station getStationByIedId(Long iedId) {
+		IED ied = iedRepository.findByIedId(iedId);
+		Station station = stationRepository.findByStationId(ied.getStationID());
 		return station;
 	}
 }

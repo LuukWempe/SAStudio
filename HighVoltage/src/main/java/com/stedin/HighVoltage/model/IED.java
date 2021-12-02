@@ -1,33 +1,40 @@
 package com.stedin.HighVoltage.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="IEDs")
+@Table(name="ied")
 public class IED {
 	
 	@Id
 	@GeneratedValue
-	private Long iedID;
+	private Long iedId;
 	
-	@Column(name="IEDName")
-	private String iedName;
+	@Column(name="name")
+	private String name;
 	
-	@Column(name="IEDIP")
+	@Column(name="iedip")
 	private String iedIP;
 	
 	@Column(name="StationID")
 	private Long stationID;
 	
-	public Long getIEDID() {return iedID;}
-	public void setIEDID(Long iedID) {this.iedID = iedID;}
+	@OneToMany(mappedBy="ied", cascade=CascadeType.ALL)
+	private List<IEDSignal> iedSignals;
 	
-	public String getIEDName() {return iedName;}
-	public void setIEDName(String iedName) {this.iedName = iedName;}
+	public Long getIEDID() {return iedId;}
+	public void setIEDID(Long id) {this.iedId = id;}
+	
+	public String getIEDName() {return name;}
+	public void setIEDName(String name) {this.name = name;}
 	
 	public String getIEDIP() {return iedIP;}
 	public void setIEDIP(String iedIP) {this.iedIP = iedIP;}

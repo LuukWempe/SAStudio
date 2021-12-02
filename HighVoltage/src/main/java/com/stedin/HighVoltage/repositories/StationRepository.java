@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StationRepository extends JpaRepository<Station, Long> {
 	Station findByStationName(String stationName);
-	Station findByStationID(Long stationID);
-	Page<Station> findAllByStationStatus(boolean stationStatus, Pageable pageable);
+	Station findByStationId(Long stationId);
+	Page<Station> findByStationStatus(boolean stationStatus, Pageable pageable);
 
 }
