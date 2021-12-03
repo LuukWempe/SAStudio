@@ -5,6 +5,8 @@ import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.model.IED;
 import com.stedin.HighVoltage.model.Station;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 @Service
 public class StationService {
@@ -47,5 +52,19 @@ public class StationService {
 		IED ied = iedRepository.findByIedId(iedId);
 		Station station = stationRepository.findByStationId(ied.getStationId());
 		return station;
+	}
+
+	public void importIO(MultipartFile file) throws IOException {
+		Workbook io = WorkbookFactory.create(new File("io.xslx"));
+		for (Sheet sheet : io) {
+			for (Row row : sheet) {
+				for (Cell cell : row) {
+					//Do Something
+				}
+			}
+		}
+		
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -22,6 +22,13 @@
 <style>
 td {
 	text-align: center;
+	white-space: nowrap;
+	border-bottom:1pt solid grey;
+}
+
+th {
+	white-space: nowrap;
+	border-bottom:1pt solid black;
 }
 </style>
 </head>
@@ -55,7 +62,7 @@ td {
 						</div>
 						<div class="two wide right aligned center aligned column"></div>
 						<div class="six wide center aligned middle aligned column">
-							<button class="ui yellow fluid inverted button" type="submit"
+							<button class="ui yellow fluid button" type="submit"
 								th:name="action"
 								th:value="'view_station:' + ${station.stationName}">Back
 								to Station View</button>
@@ -116,28 +123,28 @@ td {
 							</thead>
 							<tbody>
 								<tr class="content" th:each="signal:${signals}">
-									<td th:text="${signal.getName()}"></td>
-									<td th:text="${signal.getFp_inStation()}"></td>
-									<td th:text="${signal.getFp_NumDiAi()}"></td>
-									<td th:text="${signal.getFp_NumDu()}"></td>
-									<td th:text="${signal.getFp_Vertraging()}"></td>
-									<td th:text="${signal.getFp_HwSw()}"></td>
-									<td th:text="${signal.getFp_IedSlot()}"></td>
-									<td th:text="${signal.getFp_Klem()}"></td>
-									<td th:text="${signal.getFp_IedIO1()}"></td>
-									<td th:text="${signal.getFp_IedIO1Pos()}"></td>
-									<td th:text="${signal.getFp_IedIO1Neg()}"></td>
-									<td th:text="${signal.getFp_IedIO2()}"></td>
-									<td th:text="${signal.getFp_IedIO2Pos()}"></td>
-									<td th:text="${signal.getFp_IedIO2Neg()}"></td>
-									<td th:text="${signal.getFp_IedIO3()}"></td>
-									<td th:text="${signal.getFp_IedIO3Pos()}"></td>
-									<td th:text="${signal.getFp_IedIO3Neg()}"></td>
-									<td th:text="${signal.getFp_IedIO4()}"></td>
-									<td th:text="${signal.getFp_IedIO4Pos()}"></td>
-									<td th:text="${signal.getFp_IedIO4Neg()}"></td>
-									<td th:text="${signal.getFp_NormalePositie()}"></td>
-									<td th:text="${signal.getFp_Inverteren()}"></td>
+									<td style="background-color:#B2B2B2" th:text="${signal.getName()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_inStation()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_NumDiAi()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_NumDu()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_Vertraging()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_HwSw()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedSlot()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_Klem()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO1()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO1Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO1Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO2()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO2Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO2Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO3()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO3Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO3Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO4()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO4Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO4Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_NormalePositie()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_Inverteren()}"></td>
 								</tr>
 							</tbody>
 						</table>
