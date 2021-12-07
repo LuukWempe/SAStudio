@@ -12,7 +12,7 @@ public class Station{
 	
 	@Id
 	@GeneratedValue
-	private long stationID;
+	private long stationId;
 
 	@Column(name="stationName")
 	private String stationName;
@@ -26,7 +26,8 @@ public class Station{
 
 	//Constructor
 	public Station() {
-		
+		this.stationStatus = true;
+		this.stationName = "New Station";
 	}
 	
 	public Station(String stationName, Boolean stationStatus, String stationAddress) {
@@ -37,8 +38,8 @@ public class Station{
 	}
 	
 	//Getters and Setters
-	public long getStationID() {return stationID;}
-	public void setStationID(long stationID) {this.stationID = stationID;}
+	public long getStationID() {return stationId;}
+	public void setStationID(long stationId) {this.stationId = stationId;}
 
 	public String getStationName() {return stationName;}
 	public void setStationName(String stationName) {this.stationName = stationName;}

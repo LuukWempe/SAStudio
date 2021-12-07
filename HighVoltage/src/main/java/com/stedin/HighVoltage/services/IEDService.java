@@ -1,6 +1,8 @@
 package com.stedin.HighVoltage.services;
 
+import com.stedin.HighVoltage.repositories.IEDRepository;
 import com.stedin.HighVoltage.repositories.IEDSignalRepository;
+import com.stedin.HighVoltage.model.IED;
 import com.stedin.HighVoltage.model.IEDSignal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,13 @@ public class IEDService {
 	@Autowired
 	private IEDSignalRepository iedSignalRepository;
 
-	public List<IEDSignal> getSignalsByIEDID(int length,Long iedID){
-        Page<IEDSignal> iedSignals = iedSignalRepository.findByIedID(iedID, PageRequest.of(0,length, Sort.by("signalID").ascending()));
+	@Autowired
+	private IEDRepository iedRepository;
+
+	
+	public List<IEDSignal> getSignalsByIedId(int length,Long iedId){
+		IED ied = iedRepository.findByIedId(iedId);
+        Page<IEDSignal> iedSignals = iedSignalRepository.findByIed(ied, PageRequest.of(0,length, Sort.by("signalId").ascending()));
         return iedSignals.getContent();
     }
 }

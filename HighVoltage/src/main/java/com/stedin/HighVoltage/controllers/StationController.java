@@ -2,9 +2,11 @@ package com.stedin.HighVoltage.controllers;
 
 import com.stedin.HighVoltage.model.IED;
 import com.stedin.HighVoltage.model.Station;
-import com.stedin.HighVoltage.repositories.IEDRepository;
 import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.*;
+
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class StationController {
@@ -26,9 +29,6 @@ public class StationController {
 	StationRepository stationRepository;
 	
 	@Autowired
-	IEDRepository iedRepository;
-	
-	@Autowired
 	public StationController(){}
 	
 	 @GetMapping("/stations")
@@ -41,17 +41,17 @@ public class StationController {
 	 public String viewStation(Model model, @PathVariable("stationName") String stationName) {
 		 Station station = stationRepository.findByStationName(stationName);
 		 model.addAttribute("station",station);
-		 model.addAttribute("ieds", stationService.getStationIEDs(100,station));
+		 model.addAttribute("ieds", stationService.getStationIed(100,station));
 		 return "/station/view";
 	 }
 	 
-	 @GetMapping(path="/station/ied/{iedID}")
-	 public String viewIED(Model model, @PathVariable("iedID") Long iedID) {
-		 IED ied = stationService.getStationIEDByIEDID(iedID);
-		 Station station = stationService.getStationByIEDID(iedID);
+	 @GetMapping(path="/station/ied/{iedId}")
+	 public String viewIED(Model model, @PathVariable("iedId") Long iedId) {
+		 IED ied = stationService.getStationIedByIedId(iedId);
+		 Station station = stationService.getStationByIedId(iedId);
 		 model.addAttribute("station", station);
 		 model.addAttribute("ied",ied);
-		 model.addAttribute("signals", iedService.getSignalsByIEDID(100,iedID));
+		 model.addAttribute("signals", iedService.getSignalsByIedId(100,iedId));
 		 //model.addAttribute("signals", signals);
 		 return "/station/ied";
 	 }
@@ -68,8 +68,24 @@ public class StationController {
 		 		
 		 	case "view_ied":
 		 		return "redirect:/station/ied/" + actions[1];
-		 }
-		 
+		 		
+		 	case "new_station":
+		 		return "redirect:/station/newstation";
+		 } 
 		 return "/stations";
+	 }
+	 
+	 @PostMapping("/station/importIO")
+	 public String importStation(@RequestParam("file") MultipartFile reapExcelDataFile) throws IOException{
+		 MultipartFile file = reapExcelDataFile;
+		 stationService.importIO(file);
+		 return "/stations";
+	 }
+	 
+	 @GetMapping("/station/newstation")
+	 public String newStation(Model model) {
+		 Station newstation = new Station();
+		 model.addAttribute("newstation", newstation);
+		 return "/newstation";
 	 }
 }
