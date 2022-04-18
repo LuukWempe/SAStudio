@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <script src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+
+</head>
+
+<body style="background-color: darkslategray">
+
+
+
+    <div class="ui one column doubling grid center aligned  stackable  container">
+
+        <form class="ui stacked segment center aligned form"
+            style="position:absolute; top:200px; width:600px; background-color:#FFD100"
+            method="post" action="/login">
+            
+            <div class="ui " style="background-color: #FFD100;"></div>
+
+            <div class="field" style="margin-top:10px">          
+                    <a class="content"
+                        style="font-family:Arial;font-size:40px;font-style:bold;color:#4D4D4D">
+                        System-Automation Studio
+                    </a>
+            </div>
+                     
+            
+            <!-- <img class="image" src="../stedinlogo.png"  style="width: 60%; height: auto; margin-top:0px">     -->
+
+            <div class="ui divider"></div>
+
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" placeholder="Enter your username" name="username" />
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" placeholder="Enter your password" name="password" />
+                </div>
+            </div>
+
+            <div>
+                <button class="ui fluid  large submit button" type="submit"
+                    style="background-color: #4D4D4D; color:#FFD100">Lets Go!</button>
+            </div>
+
+            <div class="ui divider"></div>
+
+            
+
+
+    	</form>
+    </div>
+</body>
+</html>
