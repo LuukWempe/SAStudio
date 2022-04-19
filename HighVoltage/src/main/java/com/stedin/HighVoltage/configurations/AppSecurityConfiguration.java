@@ -1,7 +1,11 @@
 package com.stedin.HighVoltage.configurations;
 
 
+import com.stedin.HighVoltage.model.FileManager;
+import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.AppUserService;
+import com.stedin.HighVoltage.services.StationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -48,7 +52,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin()
             .loginPage("/login")
-                .defaultSuccessUrl("/redirectLogin")
+                .defaultSuccessUrl("/home") //redirectLogin if working with different account types (to check which dashboard to load)
                 .failureUrl("/login")
             .and()
                 .logout()
@@ -97,7 +101,6 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //Talentmanager
         appUserService.registerUser("talentmanager","Joke", "Gaarsen", "jokegaarsen@mail.com", encoder.encode("hallo"), "TALENTMANAGER", true, false, Date.valueOf("1997-01-01") ,"2216TL", "Ter Beek", "4", "Lisse", "Netherlands", "+316-45389142", "");
-      
     }
 
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>SA Studio Home</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script
+	src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+
+</head>
+
+<body style="background-color: #4D4D4D">
+	<div th:insert="~{./header :: header}"></div>
+	<script>
+		$('#home').addClass('active')
+	</script>
+
+	<div class="ui left aligned grid">
+
+		<div class="center aligned sixteen wide column"
+			style="margin-right: 50px; padding: 0px;">
+
+
+			<div class="center aligned ui segment"
+				style="margin: 25px; padding: 0px; background-color: #6b6b6b">
+				<div class="ui segment" style="margin: 25px; padding: 0px">
+					<h1>SA Studio</h1>
+					<div class="ui divider"></div>
+					<div class="ui grid">
+						<div class="three wide right aligned column">
+							<h4>Welkom to SA Studio:</h4>
+						</div>
+						<!-- Show Import IO list button on the home page-->
+						
+						<form class="ui form" method="post" th:action="@{/import_io}"
+							style="margin-left: 25px; margin-right: 25px;">
+							<div class="three wide center aligned middle aligned column">
+								<button class="ui yellow fluid inverted button" type="submit"
+									th:name="action"
+									th:value="import_io">Import IO List</button>
+							</div>
+						</form>
+						<div class="two wide left aligned column">
+							<h4>
+								<span th:text="${user.getUsername()}" th:name="stationname"></span>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

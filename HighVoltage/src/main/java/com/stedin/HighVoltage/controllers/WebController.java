@@ -3,6 +3,7 @@ package com.stedin.HighVoltage.controllers;
 import com.stedin.HighVoltage.model.FileManager;
 import com.stedin.HighVoltage.model.users.AppUser;
 import com.stedin.HighVoltage.repositories.AppUserRepository;
+import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.*;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -27,6 +28,9 @@ public class WebController {
 
     @Autowired
     private AppUserRepository appUserRepository;
+    
+    @Autowired
+    private FileManager fileManager;
 
 
 
@@ -89,10 +93,22 @@ public class WebController {
     	return "/settings";
     }
     
-    @PostMapping("/import_io")
-    public String importIO(){
-    	FileManager.importIO();
-    	return "/home";
+    @GetMapping("/importio")
+    public String getImportIO(){
+    	//FileManager.importIO();
+    	return "/importio";
+    }
+    
+    @PostMapping("/read_scd")
+    public String readscd(){
+    	fileManager.readSCD("HighVoltage/src/main/resources/static/station.xml");
+    	return "redirect:/home";
+    }
+    
+    @PostMapping("/importio")
+    public String importio(){
+    	fileManager.readSCD("HighVoltage/src/main/resources/static/station.xml");
+    	return "/importio";
     }
 
 
