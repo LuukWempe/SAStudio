@@ -26,4 +26,9 @@ public class IEDService {
         Page<IEDSignal> iedSignals = iedSignalRepository.findByIed(ied, PageRequest.of(0,length, Sort.by("signalId").ascending()));
         return iedSignals.getContent();
     }
+	
+	public void addIED(String communication, String ip, String iedName, Long stationID, String voltage) {
+		IED ied = new IED(communication, ip, iedName, stationID, voltage);
+		iedRepository.save(ied);
+	}
 }

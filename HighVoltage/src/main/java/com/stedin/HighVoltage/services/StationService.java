@@ -43,6 +43,11 @@ public class StationService {
 		stationRepository.save(station);
 	}
 	
+	public void addStation(String stationName) {
+		Station station = new Station(stationName);
+		stationRepository.save(station);
+	}
+	
 	public IED getStationIedByIedId(Long iedId) {
 		IED ied = iedRepository.findByIedId(iedId);
 		return ied;
@@ -62,9 +67,9 @@ public class StationService {
 					//Do Something
 				}
 			}
-		}
-		
-		// TODO Auto-generated method stub
-		
+		}	
 	}
+
+	
+	
 }

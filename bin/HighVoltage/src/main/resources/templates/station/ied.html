@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>SA Studio IED View</title>
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script
+	src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<style>
+td {
+	text-align: center;
+	white-space: nowrap;
+	border-bottom:1pt solid grey;
+}
+
+th {
+	white-space: nowrap;
+	border-bottom:1pt solid black;
+}
+</style>
+</head>
+
+<body style="background-color: #4D4D4D">
+	<div th:insert="~{./header :: header}"></div>
+	<script>
+		$('#stations').addClass('active')
+	</script>
+
+	<form class="ui form" method="post" th:action="@{/station/view}"
+		style="margin-left: 25px; margin-right: 25px;">
+		<div class="center aligned two column row">
+
+			<div class="column">
+				<div class="ui segment" style="margin-top: 10px">
+
+
+					<!-- Header with the Station name  -->
+					<div class="ui grid">
+						<div class="one wide middle aligned center aligned column">
+							<i class="large industry icon"></i>
+						</div>
+						<div class="four wide left aligned column">
+							<h2>IED View for Station:</h2>
+						</div>
+						<div class="three wide left aligned column">
+							<h2>
+								<span th:text="${station.stationName}" th:name="stationname"></span>
+							</h2>
+						</div>
+						<div class="two wide right aligned center aligned column"></div>
+						<div class="six wide center aligned middle aligned column">
+							<button class="ui yellow fluid button" type="submit"
+								th:name="action"
+								th:value="'view_station:' + ${station.stationName}">Back
+								to Station View</button>
+						</div>
+					</div>
+					<div class="ui divider"></div>
+
+
+					<!-- Header with the IED name  -->
+					<div class="ui grid">
+						<div class="one wide middle aligned center aligned column">
+							<i class="large microchip icon"></i>
+						</div>
+						<div class="four wide left aligned column">
+							<h3>
+								<span th:text="${ied.getIedName()}" th:name="iedname"></span>
+							</h3>
+						</div>
+						<div class="three wide left aligned column">
+							<h3>
+								<span th:text="${ied.getIedIp()}" th:name="iedname"></span>
+							</h3>
+						</div>
+						<div class="two wide right aligned center aligned column"></div>
+					</div>
+					<div class="ui divider"></div>
+
+					<!-- Header with the IED name  -->
+
+
+					<div style="overflow-x: auto;">
+						<table style="width: 100%">
+							<thead>
+								<tr>
+									<th>Signal Name</th>
+									<th>In Station</th>
+									<th># DI/AI</th>
+									<th># DO</th>
+									<th>Vertraging</th>
+									<th>HW/SW</th>
+									<th>IED Slot</th>
+									<th>Klem</th>
+									<th>1st IO</th>
+									<th>1st IO +</th>
+									<th>1st IO -</th>
+									<th>2nd IO</th>
+									<th>2nd IO +</th>
+									<th>2nd IO -</th>
+									<th>3rd IO</th>
+									<th>3rd IO +</th>
+									<th>3rd IO -</th>
+									<th>4th IO</th>
+									<th>4th IO +</th>
+									<th>4th IO -</th>
+									<th>Norm. Pos.</th>
+									<th>Inverteren</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="content" th:each="signal:${signals}">
+									<td style="background-color:#B2B2B2" th:text="${signal.getName()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_inStation()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_NumDiAi()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_NumDu()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_Vertraging()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_HwSw()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedSlot()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_Klem()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO1()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO1Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO1Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO2()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO2Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO2Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO3()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO3Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO3Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO4()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO4Pos()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_IedIO4Neg()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_NormalePositie()}"></td>
+									<td style="background-color:#FFFF99" th:text="${signal.getFp_Inverteren()}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>

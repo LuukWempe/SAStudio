@@ -1,0 +1,37 @@
+<station name="Zoetermeer 4">
+	<ied name='ZTR_ZTM4_010_GW'>
+		<voltage>10kV</voltage>
+		<communication>61850-gw</communication>
+		<ip>10.47.104.11</ip>
+	</ied>
+	<ied name='ZTR_ZTM4_010_SC'>
+		<voltage>10kV</voltage>
+		<communication>61850-sc</communication>
+		<ip>10.47.104.12</ip>
+	</ied>
+	<ied name='ZTR_ZTM4_010_IOBOX'>
+		<voltage>10kV</voltage>
+		<communication>61850-io</communication>
+		<ip>10.47.104.13</ip>
+	</ied>
+	<ied name='ZTR_ZTM4_010_V101'>
+		<voltage>10kV</voltage>
+		<communication>61850-101</communication>
+		<ip>10.47.104.41</ip>
+	</ied>
+	<ied name='ZTR_ZTM4_010_V102'>
+		<voltage>10kV</voltage>
+		<communication>61850-102</communication>
+		<ip>10.47.104.42</ip>
+	</ied>
+	<ied name='ZTR_ZTM4_010_V103'>
+		<voltage>10kV</voltage>
+		<communication>61850-103</communication>
+		<ip>10.47.104.43</ip>
+	</ied>
+	<ied name='ZTR_ZTM4_010_V104'>
+		<voltage>10kV</voltage>
+		<communication>61850-104</communication>
+		<ip>10.47.104.44</ip>
+	</ied>
+</station>

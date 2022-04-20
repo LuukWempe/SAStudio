@@ -37,6 +37,11 @@ public class Station{
 		
 	}
 	
+	public Station(String stationName) {
+		this.stationName = stationName;
+		this.stationStatus = true;
+	}
+
 	//Getters and Setters
 	public long getStationID() {return stationId;}
 	public void setStationID(long stationId) {this.stationId = stationId;}
