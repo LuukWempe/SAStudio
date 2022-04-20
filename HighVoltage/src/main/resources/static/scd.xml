@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2007" revision="B">
+   <Header id="" version="1" revision="1" toolID="SPRECON-E IEC61850 Mapper 2.30.3.v202007070844_build2800_rev25478">
+      <History>
+         <Hitem version="1" revision="1" when="2022-04-13 15:26:21" who="SPRECON-E IEC61850 Mapper 2.30.3.v202007070844_build2800_rev25478 user::luuk.wempe resources::com.sprecher.easyeng.resources-7.0.1.v202006240609_build1067_rev25307" what="Initial creation of model." why="Initial version"/>
+      </History>
+   </Header>
+   <Substation name="NLSTEDROTXXXZM13">
+      <VoltageLevel name="VOLTAGELEVEL">
+         <Bay name="BAY"/>
+      </VoltageLevel>
+   </Substation>
+   <Communication>
+      <SubNetwork name="Sprecon-Network" type="8-MMS">
+         <BitRate unit="b/s" multiplier="M">100</BitRate>
+         <ConnectedAP iedName="ZTR_ZTM13_010_GW_X_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.11</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">255.255.255.0</P>
+            </Address>
+            <GSE ldInst="GENERAL" cbName="gcb_E">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-00-01</P>
+                  <P type="APPID">0007</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+            <GSE ldInst="CTRL" cbName="gcb_Q">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-00-01</P>
+                  <P type="APPID">0006</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_SC_X_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.12</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="GENERAL" cbName="gcb_E">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-00-01</P>
+                  <P type="APPID">000A</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld100_I_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.40</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld105_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.45</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_P">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8006</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld106_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.46</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_C">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8007</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">2</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld107_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.47</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_R">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8008</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld108_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.48</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_D">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8009</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld109_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.49</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_S">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">800A</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">2</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld110_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.50</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_A">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">800B</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld111_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.51</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_O">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">800C</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld112_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.52</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_B">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">800D</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld113_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.53</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_N">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">800E</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld114_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.54</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_N">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">800F</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld115_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.55</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_Y">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">801C</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld200_I_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.80</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld201_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.81</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_Q">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">801D</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld202_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.82</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_K">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8012</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld203_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.83</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_X">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8013</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld204_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.84</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_M">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8014</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">2</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld205_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.85</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_W">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8015</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld206_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.86</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_I">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8016</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld207_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.87</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_T">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8017</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">2</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld208_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.88</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_J">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8018</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld209_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.89</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_U">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">8019</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld210_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.90</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_V">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">801A</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_010_Veld211_C_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.91</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="PROT" cbName="gcb_L">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-01-01</P>
+                  <P type="APPID">801B</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_025_VeldTR1_H_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.241</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="GENERAL" cbName="gcb_R">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-00-01</P>
+                  <P type="APPID">0008</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_025_VeldTR2_H_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.242</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+            <GSE ldInst="GENERAL" cbName="gcb_N">
+               <Address>
+                  <P type="MAC-Address">01-0C-CD-01-00-01</P>
+                  <P type="APPID">0009</P>
+                  <P type="VLAN-ID">00A</P>
+                  <P type="VLAN-PRIORITY">4</P>
+               </Address>
+               <MinTime unit="s" multiplier="m">50</MinTime>
+               <MaxTime unit="s" multiplier="m">1000</MaxTime>
+            </GSE>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_ALG_VeldIOBOX_I_" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.13</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+         </ConnectedAP>
+         <ConnectedAP iedName="ZTR_ZTM13_HMI" apName="AP1">
+            <Address>
+               <P type="IP">10.47.129.15</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">10.47.129.1</P>
+            </Address>
+         </ConnectedAP>
+      </SubNetwork>
+   </Communication>
+ </SCL>
