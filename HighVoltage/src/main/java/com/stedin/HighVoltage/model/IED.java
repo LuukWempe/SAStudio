@@ -28,9 +28,15 @@ public class IED {
 	@Column(name="communication")
 	private String communication;
 	
-	@Column(name="iedip")
-	private String iedIp;
+	@Column(name="gateway")
+	private String gateway;
 	
+	@Column(name="ip")
+	private String ip;
+	
+	@Column(name="subnet")
+	private String subnet;
+
 	@Column(name="stationid")
 	private Long stationId;
 	
@@ -38,11 +44,12 @@ public class IED {
 	private List<IEDSignal> iedSignals;
 	
 	//Constructor from FileManager.readSCD()
-	public IED(String communication,String ip, String name, Long stationId, String voltage) {
+	public IED(String communication,String gateway, String ip, String name, Long stationId, String subnet, String voltage) {
 		this.name = name;
 		this.voltage = voltage;
-		this.iedIp = ip;
-		this.communication = communication;
+		this.gateway = gateway;
+		this.ip = ip;
+		this.subnet = subnet; 
 		this.stationId = stationId;
 	}
 	
@@ -53,17 +60,23 @@ public class IED {
 	public Long getIedId() {return iedId;}
 	public void setIedId(Long id) {this.iedId = id;}
 	
-	public String getIedName() {return name;}
-	public void setIedName(String name) {this.name = name;}
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
 	
-	public String getIedVoltage() {return voltage;}
-	public void setIedVoltage(String voltage) {this.voltage = voltage;}
+	public String getVoltage() {return voltage;}
+	public void setVoltage(String voltage) {this.voltage = voltage;}
 	
-	public String getIedcommunication() {return communication;}
-	public void setIedcommunication(String communication) {this.communication = communication;}
+	public String getCommunication() {return communication;}
+	public void setCommunication(String communication) {this.communication = communication;}
 	
-	public String getIedIp() {return iedIp;}
-	public void setIedIp(String iedIp) {this.iedIp = iedIp;}
+	public String getGateway() {return gateway;}
+	public void setGateway(String gateway) {this.gateway = gateway;}
+	
+	public String getIp() {return ip;}
+	public void setIp(String ip) {this.ip = ip;}
+	
+	public String getSubnet() {return subnet;}
+	public void setSubnet(String subnet) {this.subnet = subnet;}
 	
 	public Long getStationId() {return stationId;}
 	public void setStationId(Long stationId) {this.stationId = stationId;}

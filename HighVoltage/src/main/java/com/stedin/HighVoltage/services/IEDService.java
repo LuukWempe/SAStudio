@@ -27,8 +27,8 @@ public class IEDService {
         return iedSignals.getContent();
     }
 	
-	public void addIED(String communication, String ip, String iedName, Long stationID, String voltage) {
-		IED ied = new IED(communication, ip, iedName, stationID, voltage);
+	public void addIED(String communication, String gateway, String ip, String iedName, Long stationID, String subnet, String voltage) {
+		IED ied = new IED(communication, gateway, ip, iedName, stationID, subnet, voltage);
 		iedRepository.save(ied);
 	}
 }

@@ -29,7 +29,7 @@
 
 			<div class="column">
 				<div class="ui segment" style="margin-top: 10px">
-
+					<div class="inverted ui segment" style="background-color: #4d4d4d">
 					<div class="ui grid">
 
 						<div class="one wide middle aligned center aligned column">
@@ -53,7 +53,31 @@
 								th:value="'view_stations:' + ${station.stationName}">Back
 								to Stations</button>
 						</div>
-
+						</div>
+					</div>
+					
+					<!-- Table Headings -->
+					<div class="ui grid">
+						<div class="one wide middle aligned center aligned column">
+							<h4></h4>
+						</div>
+						
+						<div class="three wide middle aligned center aligned column">
+							<h4>IED Name</h4>
+						</div>
+						
+						<div class="two wide middle aligned center aligned column">
+							<h4>IP</h4>
+						</div>
+						
+						<div class="two wide middle aligned center aligned column">
+							<h4>Subnet</h4>
+						</div>
+						
+						<div class="two wide middle aligned center aligned column">
+							<h4>Gateway</h4>
+						</div>
+					
 					</div>
 
 					<div class="ui divider"></div>
@@ -69,19 +93,31 @@
 								<i class="large microchip icon"></i>
 							</div>
 
-							<div class="two wide middle aligned center aligned column">
-								<h5>
-									<span th:text="${ied.getIedName()}"></span>
-								</h5>
-							</div>
-
 							<div class="three wide middle aligned center aligned column">
 								<h5>
-									<span th:text="${ied.getIedIp()}"></span>
+									<span th:text="${ied.getName()}"></span>
 								</h5>
 							</div>
 
-							<div class="seven wide right aligned center aligned column"></div>
+							<div class="two wide middle aligned center aligned column">
+								<h5>
+									<span th:text="${ied.getIp()}"></span>
+								</h5>
+							</div>
+							
+							<div class="two wide middle aligned center aligned column">
+								<h5>
+									<span th:text="${ied.getSubnet()}"></span>
+								</h5>
+							</div>
+							
+							<div class="two wide middle aligned center aligned column">
+								<h5>
+									<span th:text="${ied.getGateway()}"></span>
+								</h5>
+							</div>
+
+							<div class="three wide right aligned center aligned column"></div>
 
 							<div class="three wide center aligned middle aligned column">
 								<button class="ui yellow fluid inverted button" type="submit"

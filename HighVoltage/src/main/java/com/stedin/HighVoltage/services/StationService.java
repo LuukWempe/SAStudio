@@ -34,7 +34,7 @@ public class StationService {
 	}	
 	
 	public List<IED> getStationIed(int length, Station station){
-        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("iedIp").ascending()));
+        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("ip").ascending()));
         return stationIEDs.getContent();
     }
 	
@@ -43,9 +43,18 @@ public class StationService {
 		stationRepository.save(station);
 	}
 	
-	public void addStation(String stationName) {
-		Station station = new Station(stationName);
-		stationRepository.save(station);
+	
+	public Station addStation(String stationName) {
+		 Station station = stationRepository.findByStationName(stationName); 
+		 if (station == null) { 
+			 station = new Station(stationName);
+			 station.setStationStatus(true);
+			 stationRepository.save(station);
+			 System.out.println("SubStation created with name: " + stationName);
+		 } else {
+			 System.out.println("Station already exists"); 
+		 }	
+		 return station;
 	}
 	
 	public IED getStationIedByIedId(Long iedId) {

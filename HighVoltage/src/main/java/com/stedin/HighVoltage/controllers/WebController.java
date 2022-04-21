@@ -101,13 +101,13 @@ public class WebController {
     
     @PostMapping("/read_scd")
     public String readscd(){
-    	fileManager.readSCD("HighVoltage/src/main/resources/static/station.xml");
+    	fileManager.importSCD("HighVoltage/src/main/resources/static/scd.xml");
     	return "redirect:/home";
     }
     
     @PostMapping("/importio")
     public String importio(){
-    	fileManager.readSCD("HighVoltage/src/main/resources/static/station.xml");
+    	fileManager.importSCD("HighVoltage/src/main/resources/static/station.xml");
     	return "/importio";
     }
 

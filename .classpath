@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="HighVoltage/src/main/java"/>
 	<classpathentry kind="src" path="HighVoltage/src/main/resources"/>
+	<classpathentry kind="src" path="HighVoltage/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17/">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/luukwempe/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test/2.6.6/97626f535c1625e0ca3ede4351e4d55e4cd80ae1/spring-boot-test-2.6.6.jar" sourcepath="/Users/luukwempe/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test/2.6.6/ead7b9118ed5f92ec1e34afb6cdbbd04026e7fd0/spring-boot-test-2.6.6-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

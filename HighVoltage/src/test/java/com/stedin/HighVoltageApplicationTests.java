@@ -1,7 +1,7 @@
-package com.stedin;
+package java.com.stedin;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.*;
 
 @SpringBootTest
 class HighVoltageApplicationTests {

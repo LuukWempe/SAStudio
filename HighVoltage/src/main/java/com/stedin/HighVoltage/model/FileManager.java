@@ -23,104 +23,127 @@ import com.stedin.HighVoltage.services.IEDService;
 import com.stedin.HighVoltage.services.StationService;
 
 @Component
-public class FileManager{
+public class FileManager {
 
-	
 	@Autowired
 	public StationService stationService;
-	
+
 	@Autowired
 	public StationRepository stationRepository;
-	
+
 	@Autowired
-	public IEDService iedService; 
-	
+	public IEDService iedService;
+
 	@Autowired
 	public IEDRepository iedRepository;
-	
+
 	public static void importIO() {
 		JFileChooser fc = new JFileChooser();
 		fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-		
+
 		int returnValue = fc.showOpenDialog(null);
-		
+
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			File file = new File(fc.getSelectedFile().getAbsolutePath());	
+			File file = new File(fc.getSelectedFile().getAbsolutePath());
 			System.out.println(file.getName());
 		}
 	}
-	
-	//import .scd to construct the basic station lay-out
-	public void readSCD(String filePath) {
+
+	public Document readAndNormalizeSCD(String path)  {
+		
+		Document document = null;
+
+		try {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		
-		try {
-			
-			//optional but recommended, process xml securly, avoid attacks like XML External Entities(XXE)
-			dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-			
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			
-			Document doc = db.parse(new File(filePath));
-			
-			//optional but recommended
-			doc.getDocumentElement().normalize();
-			
-			
-			//retrieve stationID or create new station
-			String stationName = doc.getDocumentElement().getAttribute("name");
-			Station station = stationRepository.findByStationName(stationName);
-			if (station != null) {
-				System.out.println("Station already exists");
-			} else {
-				stationService.addStation(stationName);
-				station = stationRepository.findByStationName(stationName);
-			}
+		// optional but recommended, process xml securly, avoid attacks like XML
+		// External Entities(XXE)
+		dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		document = db.parse(new File(path));
+		} catch (IOException | ParserConfigurationException | SAXException e){
+			e.printStackTrace();
+		}
+		// optional but recommended, removes whitespaces etc.
+		document.getDocumentElement().normalize();
 
+		return document;
+	}
+
+	// import .scd to construct the basic station lay-out
+	public void importSCD(String path) {
+
+		// read, normalize and return xml document
+		Document scd = readAndNormalizeSCD(path);
+		
+		System.out.println("Root Element: " + scd.getDocumentElement().getNodeName());
+		System.out.println("XML Namespace: " + scd.getDocumentElement().getAttribute("xmlns"));
+		System.out.println("-----------------------------------");
+		
+		//Retrieve stationName from .scd and create a new station if it not excists
+		Station substation = stationService.addStation(scd.getElementsByTagName("Substation").item(0).getAttributes().getNamedItem("name").getNodeValue());
+		
+		//Get the ConnectAP's from the .scd
+		NodeList list = scd.getElementsByTagName("ConnectedAP");
+
+
+		
+		// Iterate over list to find the ELEMENT_NODE's and work with them
+		for (int i = 0; i < list.getLength(); i++) {
 			
-			System.out.println("Root Element: " + doc.getDocumentElement().getNodeName());
-			System.out.println("Station name: " + doc.getDocumentElement().getAttribute("name"));
-			System.out.println("-----------------------------------");
+			String ip = "";
+			String subnet = "";
+			String gateway = "";
+			String iedName = "";
+			String apName = "";
+
+			// Get single Node (Element=ConnectAP) from the list and cast it to Object Element.
+			// This is possible because Element implements Node
+			Element connectAP = (Element) list.item(i);
+
+			// get the attributes of the ConnectedAP element
+			iedName = connectAP.getAttribute("iedName");
+			apName = connectAP.getAttribute("apName");
+
+			// get the Address Elements from the ConnectAP Element
+			NodeList address = connectAP.getElementsByTagName("Address");
+
+			// Get Address information from the Address Element
 			
-			//get list of IED's in station
-			NodeList list = doc.getElementsByTagName("ied");
-			
-			for (int i = 0; i < list.getLength(); i++) {
-				Node node = list.item(i);
-				
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					
-					// get the first IED
-					Element element = (Element) node;
-					
-					// get ied id
-					String name = element.getAttribute("name");
-					
-					// get IED parameters
-					String voltage = element.getElementsByTagName("voltage").item(0).getTextContent();
-					String communication = element.getElementsByTagName("communication").item(0).getTextContent();
-					String ip = element.getElementsByTagName("ip").item(0).getTextContent();
-					
-					//see if IED already exists in DB
-					IED ied = iedRepository.findByName(name);
-					if (ied != null) {
-						System.out.println("IED already exists");
-					} else {
-						iedService.addIED(communication, ip, name, station.getStationID(), voltage);
+
+			for (int j = 0; j < address.getLength(); j++) {
+				Element a = (Element) address.item(j);
+				NodeList pList = a.getElementsByTagName("P");
+
+				// read the list of Elements P
+				for (int k = 0; k < pList.getLength(); k++) {
+					// System.out.println(pList.item(k).getNodeName() + " " +
+					// pList.item(k).getAttributes().getNamedItem("type").getNodeValue());
+
+					switch (pList.item(k).getAttributes().getNamedItem("type").getNodeValue()) {
+					case "IP":
+						ip = pList.item(k).getTextContent();
+					case "IP-SUBNET":
+						subnet = pList.item(k).getTextContent();
+					case "IP-GATEWAY":
+						gateway = pList.item(k).getTextContent();
 					}
-					
-					System.out.println("Current Element: " + node.getNodeName());
-					System.out.println("	IED name: " + name);
-					System.out.println("	IED Voltage: " + voltage);
-					System.out.println("	IED Communication: " + communication + "\n");
 				}
 			}
 			
-			
-		} catch (ParserConfigurationException | SAXException | IOException e){
-			e.printStackTrace();
+			iedService.addIED(apName, gateway, ip, iedName, substation.getStationID(), subnet, path);
+
+			System.out.println("name: " + iedName + "  apName: " + apName + "  ip: " + ip + "  subnet: " + subnet
+					+ "  gateway: " + gateway + "\n");
+
+			// see if IED already exists in DB
+			/*
+			 * IED ied = iedRepository.findByName(name); if (ied != null) {
+			 * System.out.println("IED already exists"); } else {
+			 * iedService.addIED(communication, ip, name, station.getStationID(), voltage);
+			 * }
+			 */
 		}
-		
+
 	}
 }
-

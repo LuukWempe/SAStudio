@@ -6,7 +6,7 @@
       </History>
    </Header>
    <Substation name="NLSTEDROTXXXZM13">
-      <VoltageLevel name="VOLTAGELEVEL">
+      <VoltageLevel name="VOLTAGELEVEL">10kV
          <Bay name="BAY"/>
       </VoltageLevel>
    </Substation>
