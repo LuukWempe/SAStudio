@@ -23,48 +23,34 @@
 		$('#home').addClass('active')
 	</script>
 
-	<div class="ui left aligned grid">
-
-		<div class="center aligned sixteen wide column"
-			style="margin-right: 50px; padding: 0px;">
-
-
-			<div class="center aligned ui segment"
-				style="margin: 25px; padding: 0px; background-color: #6b6b6b">
-				<div class="ui segment" style="margin: 25px; padding: 0px">
+			<div class="ui segment" style="margin: 25px; padding: 0px">
+				<div class="inverted ui segment" style="background-color: #4d4d4d; margin: 14px">
 					<h1>SA Studio</h1>
-					<div class="ui divider"></div>
-					<div class="ui grid">
-						<div class="three wide right aligned column">
-							<h4>Welkom to SA Studio:</h4>
-						</div>
-						<!-- Show Import IO list button on the home page-->
-						
-						
-						<div class="two wide left aligned column">
-							<h4>
-								<span th:text="${user.getUsername()}" th:name="stationname"></span>
-							</h4>
-						</div>
-						
-						
-						
-						
-						
-					</div>
-					<div class="ui divider"></div>
-					<form class="ui form" method="post" th:action="@{/read_scd}"
-							style="margin-left: 25px; margin-right: 25px;">
-							<div class="three wide center aligned middle aligned column">
-								<button class="ui yellow fluid inverted button" type="submit" style="margin: 25px;"
-									th:name="action"
-									th:value="read_scd">Read SCD</button>
-							</div>
-						</form>
 				</div>
+				<div class="ui divider"></div>
+				<div class="ui grid">
+					<div class="three wide right aligned column">
+						<h4>Welkom to SA Studio:</h4>
+					</div>
+					<!-- Show Import IO list button on the home page-->
+
+
+					<div class="two wide left aligned column">
+						<h4>
+							<span th:text="${user.getUsername()}" th:name="stationname"></span>
+						</h4>
+					</div>
+				</div>
+				<div class="ui divider"></div>
+				
+				<form class="ui form" method="post" th:action="@{/read_scd}"
+					style="margin-left: 25px; margin-right: 25px;">
+
+						<button class="ui yellow fluid inverted button" type="submit"
+							style="margin-bottom: 10px" th:name="action" th:value="read_scd">Read
+							SCD</button>
+				</form>
 			</div>
-		</div>
-	</div>
 </body>
 
 </html>

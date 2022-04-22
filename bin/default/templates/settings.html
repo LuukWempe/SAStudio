@@ -23,29 +23,32 @@
 		$('#settings').addClass('active')
 	</script>
 
-	
 
-	<form class="ui form segment" method="post" action="/changepassword"
+
+	<form class="ui form" method="post" action="/changepassword"
 		style="margin-left: 25px; margin-right: 25px;">
 		
-		<div class="inverted ui segment" style="background-color: #4d4d4d">
-			<h1 style="margin-left: 10px">Settings</h1>
-		</div>
+		<div class="ui segment" style="margin-top: 25px">
+			<div class="inverted ui segment" style="background-color: #4d4d4d">
+				<h1 style="margin-left: 10px">Settings</h1>
+			</div>
 
-		<p>Change Password</p>
-		<div class="two fields">
-			<div class="field">
-				<label>New Password</label> <input placeholder="New Password"
-					name="new_password" type="password">
+			<p>Change Password</p>
+			
+			<div class="two fields">
+				<div class="field">
+					<label>New Password</label> <input placeholder="New Password"
+						name="new_password" type="password">
+				</div>
+				<div class="field">
+					<label>Confirm New Password</label> <input
+						placeholder="Confirm New Password" name="confirm_password"
+						type="password">
+				</div>
 			</div>
-			<div class="field">
-				<label>Confirm New Password</label> <input
-					placeholder="Confirm New Password" name="confirm_password"
-					type="password">
-			</div>
+			<button class="ui primary submit button">Change</button>
+			<div class="ui error message"></div>
 		</div>
-		<button class="ui primary submit button">Change</button>
-		<div class="ui error message"></div>
 	</form>
 
 
