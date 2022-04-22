@@ -1,6 +1,6 @@
 package com.stedin.HighVoltage.controllers;
 
-import com.stedin.HighVoltage.model.IED;
+import com.stedin.HighVoltage.model.ied.IED;
 import com.stedin.HighVoltage.model.Station;
 import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.*;
@@ -51,7 +51,7 @@ public class StationController {
 		 Station station = stationService.getStationByIedId(iedId);
 		 model.addAttribute("station", station);
 		 model.addAttribute("ied",ied);
-		 model.addAttribute("signals", iedService.getSignalsByIedId(100,iedId));
+		 model.addAttribute("signals", iedService.getSignalsById(100,iedId));
 		 //model.addAttribute("signals", signals);
 		 return "/station/ied";
 	 }

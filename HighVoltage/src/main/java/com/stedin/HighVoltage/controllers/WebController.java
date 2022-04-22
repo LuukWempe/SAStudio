@@ -3,7 +3,6 @@ package com.stedin.HighVoltage.controllers;
 import com.stedin.HighVoltage.model.FileManager;
 import com.stedin.HighVoltage.model.users.AppUser;
 import com.stedin.HighVoltage.repositories.AppUserRepository;
-import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.*;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -66,7 +65,7 @@ public class WebController {
 	}
 
 
-	@GetMapping("redirectLogin")
+	/*@GetMapping("redirectLogin")
 	public String getDashBoard() {
 
 		try {
@@ -81,7 +80,7 @@ public class WebController {
 		} catch (Exception e) {
 			return "/login";
 		}
-	}
+	}*/
 
     @GetMapping("/settings")
     public String accountsettings() {

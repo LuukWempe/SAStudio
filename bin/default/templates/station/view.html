@@ -101,19 +101,19 @@
 
 							<div class="two wide middle aligned center aligned column">
 								<h5>
-									<span th:text="${ied.getIp()}"></span>
+									<span th:text="${ied.getConfiguration().getIp()}"></span>
 								</h5>
 							</div>
 							
 							<div class="two wide middle aligned center aligned column">
 								<h5>
-									<span th:text="${ied.getSubnet()}"></span>
+									<span th:text="${ied.getConfiguration().getSubnet()}"></span>
 								</h5>
 							</div>
 							
 							<div class="two wide middle aligned center aligned column">
 								<h5>
-									<span th:text="${ied.getGateway()}"></span>
+									<span th:text="${ied.getConfiguration().getGateway()}"></span>
 								</h5>
 							</div>
 

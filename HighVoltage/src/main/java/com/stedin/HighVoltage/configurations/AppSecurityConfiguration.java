@@ -1,11 +1,7 @@
 package com.stedin.HighVoltage.configurations;
 
 
-import com.stedin.HighVoltage.model.FileManager;
-import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.AppUserService;
-import com.stedin.HighVoltage.services.StationService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

@@ -1,6 +1,6 @@
 package com.stedin.HighVoltage.repositories;
 
-import com.stedin.HighVoltage.model.IED;
+import com.stedin.HighVoltage.model.ied.IED;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package com.stedin.HighVoltage.model;
+package com.stedin.HighVoltage.model.ied;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -196,7 +196,7 @@ public class IEDSignal{
 
 
 	//Methods
-	public Long getIedId() {
+	public Long getIEDId() {
 		return this.ied.getIedId();
 	}
 	

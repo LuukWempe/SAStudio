@@ -1,4 +1,4 @@
-package com.stedin.HighVoltage.model;
+package com.stedin.HighVoltage.model.ied;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +19,7 @@ public class IED {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long iedId;
 	
 	@Column(name="name")
@@ -25,17 +28,9 @@ public class IED {
 	@Column(name="voltage")
 	private String voltage;
 	
-	@Column(name="communication")
-	private String communication;
-	
-	@Column(name="gateway")
-	private String gateway;
-	
-	@Column(name="ip")
-	private String ip;
-	
-	@Column(name="subnet")
-	private String subnet;
+	@OneToOne(mappedBy="ied", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Configuration configuration;
 
 	@Column(name="stationid")
 	private Long stationId;
@@ -43,13 +38,21 @@ public class IED {
 	@OneToMany(mappedBy="ied", cascade=CascadeType.ALL)
 	private List<IEDSignal> iedSignals;
 	
+	
+	
+	
 	//Constructor from FileManager.readSCD()
-	public IED(String communication,String gateway, String ip, String name, Long stationId, String subnet, String voltage) {
+	public IED(Configuration configuration, String name, Long stationId, String voltage) {
+		this.configuration = configuration;
 		this.name = name;
 		this.voltage = voltage;
-		this.gateway = gateway;
-		this.ip = ip;
-		this.subnet = subnet; 
+		this.stationId = stationId;
+	}
+	
+	public IED(String name, Long stationId, String voltage) {
+		this.configuration = new Configuration(this.getIedId());
+		this.name = name;
+		this.voltage = voltage;
 		this.stationId = stationId;
 	}
 	
@@ -58,7 +61,7 @@ public class IED {
 	
 	//Getters and Setters
 	public Long getIedId() {return iedId;}
-	public void setIedId(Long id) {this.iedId = id;}
+	public void setIedId(Long iedId) {this.iedId = iedId;}
 	
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
@@ -66,17 +69,8 @@ public class IED {
 	public String getVoltage() {return voltage;}
 	public void setVoltage(String voltage) {this.voltage = voltage;}
 	
-	public String getCommunication() {return communication;}
-	public void setCommunication(String communication) {this.communication = communication;}
-	
-	public String getGateway() {return gateway;}
-	public void setGateway(String gateway) {this.gateway = gateway;}
-	
-	public String getIp() {return ip;}
-	public void setIp(String ip) {this.ip = ip;}
-	
-	public String getSubnet() {return subnet;}
-	public void setSubnet(String subnet) {this.subnet = subnet;}
+	public Configuration getConfiguration() {return configuration;}
+	public void setConfiguration(Configuration configuration) {this.configuration = configuration;}
 	
 	public Long getStationId() {return stationId;}
 	public void setStationId(Long stationId) {this.stationId = stationId;}

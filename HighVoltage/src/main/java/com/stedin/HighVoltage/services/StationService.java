@@ -2,7 +2,7 @@ package com.stedin.HighVoltage.services;
 
 import com.stedin.HighVoltage.repositories.IEDRepository;
 import com.stedin.HighVoltage.repositories.StationRepository;
-import com.stedin.HighVoltage.model.IED;
+import com.stedin.HighVoltage.model.ied.IED;
 import com.stedin.HighVoltage.model.Station;
 
 import java.io.File;
@@ -16,7 +16,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 @Service
 public class StationService {
@@ -34,7 +33,7 @@ public class StationService {
 	}	
 	
 	public List<IED> getStationIed(int length, Station station){
-        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("ip").ascending()));
+        Page<IED> stationIEDs = iedRepository.findAllByStationId(station.getStationID(), PageRequest.of(0,length, Sort.by("iedId").ascending()));
         return stationIEDs.getContent();
     }
 	
@@ -73,6 +72,7 @@ public class StationService {
 		for (Sheet sheet : io) {
 			for (Row row : sheet) {
 				for (Cell cell : row) {
+					System.out.print(cell);
 					//Do Something
 				}
 			}

@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.stedin.HighVoltage.model.ied.Configuration;
 import com.stedin.HighVoltage.repositories.IEDRepository;
 import com.stedin.HighVoltage.repositories.StationRepository;
 import com.stedin.HighVoltage.services.IEDService;
@@ -81,7 +81,8 @@ public class FileManager {
 		System.out.println("-----------------------------------");
 		
 		//Retrieve stationName from .scd and create a new station if it not excists
-		Station substation = stationService.addStation(scd.getElementsByTagName("Substation").item(0).getAttributes().getNamedItem("name").getNodeValue());
+		String substationName = scd.getElementsByTagName("Substation").item(0).getAttributes().getNamedItem("name").getNodeValue();
+		Station substation = stationService.addStation(substationName);
 		
 		//Get the ConnectAP's from the .scd
 		NodeList list = scd.getElementsByTagName("ConnectedAP");
@@ -109,8 +110,6 @@ public class FileManager {
 			NodeList address = connectAP.getElementsByTagName("Address");
 
 			// Get Address information from the Address Element
-			
-
 			for (int j = 0; j < address.getLength(); j++) {
 				Element a = (Element) address.item(j);
 				NodeList pList = a.getElementsByTagName("P");
@@ -130,11 +129,11 @@ public class FileManager {
 					}
 				}
 			}
+			Configuration config = new Configuration(gateway, ip, subnet);
 			
-			iedService.addIED(apName, gateway, ip, iedName, substation.getStationID(), subnet, path);
+			iedService.addIED(config, iedName, substation.getStationID(), "10kV");
 
-			System.out.println("name: " + iedName + "  apName: " + apName + "  ip: " + ip + "  subnet: " + subnet
-					+ "  gateway: " + gateway + "\n");
+			System.out.println("name: " + iedName + "  apName: " + apName + "   "+ iedRepository.findByName(iedName).getConfiguration().toString());
 
 			// see if IED already exists in DB
 			/*
